@@ -2,10 +2,10 @@
 
 const blogPostsSchema = (sequelize, DataTypes) => {
   const blogPostsTable = sequelize.define("BlogPost", {
-    title: sequelize.STRING,
-    content: Sequelize.STRING,
-    published: Sequelize.DATE,
-    updated: sequelize.DATE,
+    title: DataTypes.STRING,
+    content: DataTypes.STRING,
+    published: DataTypes.DATE,
+    updated: DataTypes.DATE,
   }, {
     timestamps: false,
   });
@@ -13,7 +13,7 @@ const blogPostsSchema = (sequelize, DataTypes) => {
   blogPostsTable.associate = (models) => {
     blogPostsTable.belongsTo(models.User, { as: 'user', foreignKey: 'userId' });
   };
-
+  // o "as" é o que vai aparecer no postman quando fizer a consulta, o post tem um user.
   return blogPostsTable;
 };
 
