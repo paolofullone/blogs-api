@@ -1,0 +1,8 @@
+{
+    "conventionalCommits.scopes": [
+        "Sequelize Config",
+        "ExpressConfigs",
+        "MSC Layers",
+        "JWT config"
+    ]
+}
