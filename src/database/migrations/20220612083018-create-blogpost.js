@@ -10,24 +10,31 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       title: {
-        allowNull: false,
         type: Sequelize.STRING,
+        allowNull: false,
       },
       content: {
-        allowNull: false,
         type: Sequelize.STRING,
+        allowNull: false,
       },
       userId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
+        // no course além dessas referencias, passou também um field: employee_id que é o nome da PK do employee na representação do banco.
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       published: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
       updated: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
     });
     return BlogPostsTable;
