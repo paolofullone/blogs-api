@@ -3,6 +3,7 @@
         "Sequelize Config",
         "ExpressConfigs",
         "MSC Layers",
-        "JWT config"
+        "JWT config",
+        "Overall"
     ]
 }
