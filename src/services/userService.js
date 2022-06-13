@@ -11,6 +11,18 @@ const getUserByEmail = async (email, password) => {
     return token;
 };
 
+const createUser = async ({ displayName, email, password, image }) => {
+    const UserExists = await User.findOne({ where: { email } });
+    if (UserExists) {
+        const error = { status: 409, message: 'User already registered' };
+        throw error;
+    }
+    await User.create({ displayName, email, password, image });
+    const token = generateJWTToken(email, password);
+    return token;
+};
+
 module.exports = {
     getUserByEmail,
+    createUser,
 };
