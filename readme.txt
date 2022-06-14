@@ -65,4 +65,16 @@ module.exports = PostCategoriesSchema;
 
 Das duas formas cria as tabelas, e mesmo desta segunda forma continua não aparecendo as FK's no meu mySQL Workbench (na aba Foreign Keys, os campos aparecem), no beekeper aparece tanto como FK quanto os campos.
 
--x-x-x-x-x-x-
+-x-x-x-x-x-x-x-x-x-x-x-x-x--x-x-x-x-x-x--x-x-x-x-x-x--x-x-x-x-x-x--x-x-x-x-x-x--x-x-x-x-x-x-
+
+No req12, criei a validatePost que chama a validateCategoryIds e a ValidateExistingCategoryIds.
+Fiquei um bom tempo fazendo o caminho de chamar a ValidateCategoryIds e ela chamar a ValidateExistingCategoryIds e sempre caía no erro de:
+
+[UnhandledPromiseRejection: This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). The promise rejected with the reason "#<Object>".] {
+  code: 'ERR_UNHANDLED_REJECTION'
+
+Só consegui resolver passando um try/catch englobando a validateCategoryIds e ValidateExistingCategoryIds, capturando o erro e retornando o erro para a Service e fazendo o throw dentro de outro try/catch na service.
+
+Dentro da ValidatePost, pude fazer o throw do erro dentro da validateCategoryIds, mmas não aceitou passar o erro dentro da validateCategoryIds.
+
+Primeiro havia tentado resolver com Promise.All e passando um every  retornando um booleano para verificar se todos os ids informados existiam nos ids das categorias, achei que era este o problema, fiz um array com os id's das categorias e outro com o do objeto informado e o problema persistiu, por fim resolvi com os 2 try/catchs.
