@@ -3,10 +3,11 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 
 const jwtConfig = {
-    expiresIn: '15m',
+    // 3 days token expiration
+    expiresIn: '4320m',
     algorithm: 'HS256',
 };
-const generateJWTToken = ({ email, password }) =>
+const generateJWTToken = (email, password) => 
     jwt.sign({ email, password }, JWT_SECRET, jwtConfig);
 
 const authenticateToken = async (token) => {
@@ -15,7 +16,7 @@ const authenticateToken = async (token) => {
         throw error;
     }
     try {
-        const decoded = await jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, JWT_SECRET);
         return decoded;
     } catch (error) {
         const err = { status: 401, message: 'Expired or invalid token' };
