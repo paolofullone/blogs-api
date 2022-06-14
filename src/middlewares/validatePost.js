@@ -1,4 +1,5 @@
 const { getCategories } = require('../services/categoryService');
+const { BlogPost, User } = require('../database/models');
 
 const err = { status: 400, message: '"categoryIds" not found' };
 
@@ -31,4 +32,20 @@ const validatePost = (req, res, next) => {
     next();
 };
 
-module.exports = validatePost;
+const validatePostUpdate = async (email, id, body) => {
+    const { title, content } = body;
+
+    const postUserEditing = await User.findOne({ where: { email } });
+    const postUserAuthor = await BlogPost.findOne({ where: { id } });
+
+    if (postUserEditing.id !== postUserAuthor.userId) {
+        const error = { status: 401, message: 'Unauthorized user' };
+        throw error;
+    }
+    await BlogPost.update(
+        { title, content, updated: new Date() },
+        { where: { id } },
+    );
+};
+
+module.exports = { validatePost, validatePostUpdate };
