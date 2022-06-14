@@ -78,3 +78,13 @@ Só consegui resolver passando um try/catch englobando a validateCategoryIds e V
 Dentro da ValidatePost, pude fazer o throw do erro dentro da validateCategoryIds, mmas não aceitou passar o erro dentro da validateCategoryIds.
 
 Primeiro havia tentado resolver com Promise.All e passando um every  retornando um booleano para verificar se todos os ids informados existiam nos ids das categorias, achei que era este o problema, fiz um array com os id's das categorias e outro com o do objeto informado e o problema persistiu, por fim resolvi com os 2 try/catchs.
+
+
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+
+Para o req 13, a sintaxe para excluir um campo (password), é um pouco diferente da sintaxe das categorys, que traz todas as informações, não consegui fazer a exclusão usando o through, fiz sem o through na base da tentativa e erro.
+
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
