@@ -2,7 +2,7 @@ const express = require('express');
 
 const blogPostService = require('../services/blogPostService');
 const userService = require('../services/userService');
-const validatePost = require('../middlewares/validatePost');
+const { validatePost } = require('../middlewares/validatePost');
 
 const blogPostRouter = express.Router();
 
@@ -21,6 +21,14 @@ blogPostRouter.get('/', async (req, res) => {
 blogPostRouter.get('/:id', async (req, res) => {
     const post = await blogPostService.getBlogPostById(req.params.id);
     res.status(200).send(post);
+});
+
+blogPostRouter.put('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { email } = res.user;
+    console.log(id, email);
+    const updatedPost = await blogPostService.updateBlogPost(email, id, req.body);
+    res.status(200).send(updatedPost);
 });
 
 module.exports = blogPostRouter;
