@@ -18,4 +18,9 @@ blogPostRouter.get('/', async (req, res) => {
     res.status(200).send(posts);
 });
 
+blogPostRouter.get('/:id', async (req, res) => {
+    const post = await blogPostService.getBlogPostById(req.params.id);
+    res.status(200).send(post);
+});
+
 module.exports = blogPostRouter;
