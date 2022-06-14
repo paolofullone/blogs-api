@@ -32,18 +32,32 @@ const createBlogPost = async (user, { title, content, categoryIds }) => {
 };
 
 const getAllBlogPosts = async () => {
-  console.log('entrou na blogPostService');
   const blogPosts = await BlogPost.findAll({
     include: [
       { model: User, as: 'user', attributes: { exclude: ['password'] } },
       { model: Category, as: 'categories', through: { attributes: [] } },
     ],
   });
-  console.log('blogPosts', blogPosts);
   return blogPosts;
+};
+
+const getBlogPostById = async (id) => {
+  const blogPost = await BlogPost.findOne({
+    where: { id },
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+  });
+  if (!blogPost) {
+    const err = { status: 404, message: 'Post does not exist' };
+    throw err;
+  }
+  return blogPost;
 };
 
 module.exports = {
   createBlogPost,
   getAllBlogPosts,
+  getBlogPostById,
 };
