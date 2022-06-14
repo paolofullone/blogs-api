@@ -76,9 +76,27 @@ const updateBlogPost = async (email, id, body) => {
   return result;
 };
 
+const deleteBlogPost = async (email, id) => {
+  const userDeleting = await User.findOne({ where: { email } });
+  const blogPost = await BlogPost.findOne({ where: { id } });
+  
+  if (!blogPost) {
+    const err = { status: 404, message: 'Post does not exist' };
+    throw err;
+  }
+
+  if (blogPost.userId !== userDeleting.dataValues.id) {
+    const err = { status: 401, message: 'Unauthorized user' };
+    throw err;
+  }
+
+  await blogPost.destroy();
+};
+
 module.exports = {
   createBlogPost,
   getAllBlogPosts,
   getBlogPostById,
   updateBlogPost,
+  deleteBlogPost,
 };
