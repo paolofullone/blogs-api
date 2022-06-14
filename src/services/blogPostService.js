@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const { BlogPost } = require('../database/models');
 const { sequelize } = require('../database/models');
 const { User, Category } = require('../database/models');
+const { validatePostUpdate } = require('../middlewares/validatePost');
 
 const getUser = async (user) => {
   const result = jwt.verify(user, process.env.JWT_SECRET);
@@ -56,8 +57,28 @@ const getBlogPostById = async (id) => {
   return blogPost;
 };
 
+const updateBlogPost = async (email, id, body) => {
+  const { title, content } = body;
+  if (!title || !content) {
+    const err = { status: 400, message: 'Some required fields are missing' };
+    throw err;
+  }
+
+  await validatePostUpdate(email, id, body);
+
+  const result = await BlogPost.findOne({
+    where: { id },
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+  });
+  return result;
+};
+
 module.exports = {
   createBlogPost,
   getAllBlogPosts,
   getBlogPostById,
+  updateBlogPost,
 };
