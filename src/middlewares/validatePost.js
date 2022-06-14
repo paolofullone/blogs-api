@@ -2,9 +2,9 @@ const { getCategories } = require('../services/categoryService');
 
 const err = { status: 400, message: '"categoryIds" not found' };
 
-const validateExistingCategoryIds = async (categoryIds) => {
-    const categories = await getCategories();
-    const informedCategoriesIds = categories.map((category) => category.id);
+const validateExistingCategories = async (categoryIds) => {
+    const existingCategories = await getCategories();
+    const informedCategoriesIds = existingCategories.map((category) => category.id);
     const categoryIdsExist = categoryIds
         .every((categoryId) => informedCategoriesIds.includes(categoryId));
     if (!categoryIdsExist) {
@@ -24,7 +24,7 @@ const validatePost = (req, res, next) => {
     }
     try {
         validateCategoryIds(categoryIds);
-        validateExistingCategoryIds(categoryIds);        
+        validateExistingCategories(categoryIds);        
     } catch (error) {
         return res.status(error.status).json(error);
     }
