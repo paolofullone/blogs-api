@@ -4,8 +4,19 @@ const { Category } = require('../database/models');
 
 const getCategories = async () => {
     const categories = await Category.findAll();
-    console.log(categories);
     return categories;
+};
+
+const getCategory = async (id) => {
+    const category = await Category.findByPk(id);
+    if (!category) {
+        const err = {
+            status: 400,
+            message: '"categoryIds" not found',
+        };
+        throw err;
+    }
+    return category;
 };
 
 const createCategory = async (name) => {
@@ -16,4 +27,5 @@ const createCategory = async (name) => {
 module.exports = {
     getCategories,
     createCategory,
+    getCategory,
 };
