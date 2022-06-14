@@ -26,9 +26,15 @@ blogPostRouter.get('/:id', async (req, res) => {
 blogPostRouter.put('/:id', async (req, res) => {
     const { id } = req.params;
     const { email } = res.user;
-    console.log(id, email);
     const updatedPost = await blogPostService.updateBlogPost(email, id, req.body);
     res.status(200).send(updatedPost);
+});
+
+blogPostRouter.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    const { email } = res.user;
+    await blogPostService.deleteBlogPost(email, id);
+    res.status(204).send();
 });
 
 module.exports = blogPostRouter;
