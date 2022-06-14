@@ -10,6 +10,12 @@ categoryRouter.get('/', validateAuth, async (_req, res) => {
     res.send(categories);
 });
 
+categoryRouter.get('/:id', validateAuth, async (req, res) => {
+    const { id } = req.params;
+    const category = await categoryService.getCategory(id);
+    res.send(category);
+});
+
 categoryRouter.post('/', validateAuth, validateCategory, async (req, res) => {
     const { name } = req.body;
     const category = await categoryService.createCategory(name);
