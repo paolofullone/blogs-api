@@ -10,10 +10,7 @@ const getCategories = async () => {
 const getCategory = async (id) => {
     const category = await Category.findByPk(id);
     if (!category) {
-        const err = {
-            status: 400,
-            message: '"categoryIds" not found',
-        };
+        const err = { status: 400, message: '"categoryIds" not found' };
         throw err;
     }
     return category;
