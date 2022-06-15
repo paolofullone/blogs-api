@@ -8,14 +8,20 @@ const blogPostRouter = express.Router();
 
 blogPostRouter.post('/', validatePost, async (req, res) => {
     const { email, password } = res.user;
-    const user = await userService.getUserByEmail(email, password);
-    const newPost = await blogPostService.createBlogPost(user, req.body);
+    const token = await userService.getUserByEmail(email, password);
+    const newPost = await blogPostService.createBlogPost(token, req.body);
     res.status(201).send(newPost);
 });
 
 blogPostRouter.get('/', async (req, res) => {
     const posts = await blogPostService.getAllBlogPosts();
     res.status(200).send(posts);
+});
+
+blogPostRouter.get('/search', async (req, res) => {
+    const { q } = req.query;
+    const posts = await blogPostService.getBlogPostsBySearch(q);
+    res.status(200).send(Object.values(posts));
 });
 
 blogPostRouter.get('/:id', async (req, res) => {
