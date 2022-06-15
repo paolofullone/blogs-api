@@ -28,4 +28,10 @@ userRouter.get('/user/:id', validateAuth, async (req, res) => {
     res.send(user);
 });
 
+userRouter.delete('/user/me', validateAuth, async (_req, res) => {
+    const { user } = res;
+    await userService.deleteUser(user);
+    res.status(204).send();
+});
+
 module.exports = userRouter;
