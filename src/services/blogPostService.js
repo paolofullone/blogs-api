@@ -1,19 +1,13 @@
-const jwt = require('jsonwebtoken');
-const { BlogPost } = require('../database/models');
-const { sequelize } = require('../database/models');
-const { User, Category } = require('../database/models');
+const { Op } = require('sequelize');
+const { User, Category, BlogPost, sequelize } = require('../database/models');
 const { validatePostUpdate } = require('../middlewares/validatePost');
+const { getUserId } = require('../utils/getUserId');
 
-const getUser = async (user) => {
-  const result = jwt.verify(user, process.env.JWT_SECRET);
-  const { email } = result;
-  const userSearched = await User.findOne({ where: { email } });
-  return userSearched.dataValues.id;
-};
+const getUser = async (token) => getUserId(token);
 
-const createBlogPost = async (user, { title, content, categoryIds }) => {
+const createBlogPost = async (token, { title, content, categoryIds }) => {
   try {
-    const userSearchedId = await getUser(user);
+    const userSearchedId = await getUser(token);
     const result = await sequelize.transaction(async (t) => {
       const blogPost = await BlogPost.create({
         title,
@@ -93,10 +87,31 @@ const deleteBlogPost = async (email, id) => {
   await blogPost.destroy();
 };
 
+const getBlogPostsBySearch = async (q) => {
+  if (!q) {
+    return getAllBlogPosts();
+  }
+  const blogPosts = await BlogPost.findAll({
+    include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } },
+      { model: Category, as: 'categories', through: { attributes: [] } },
+    ],
+    where: {
+      [Op.or]: [
+        { title: { [Op.like]: `%${q}%` } },
+        { content: { [Op.like]: `%${q}%` } },
+      ],
+    },
+  });
+  if (!blogPosts) return [];
+  return blogPosts;
+};
+
 module.exports = {
   createBlogPost,
   getAllBlogPosts,
   getBlogPostById,
   updateBlogPost,
   deleteBlogPost,
+  getBlogPostsBySearch,
 };
