@@ -19,7 +19,6 @@ const blogPostsSchema = (sequelize, DataTypes) => {
   blogPostsTable.associate = (models) => {
     blogPostsTable.belongsTo(models.User, { as: 'user', foreignKey: 'userId' });
   };
-  // o "as" é o que vai aparecer no postman quando fizer a consulta, o post tem um user.
   return blogPostsTable;
 };
 
