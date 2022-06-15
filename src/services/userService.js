@@ -1,4 +1,5 @@
 const { User } = require('../database/models');
+const { getUserId } = require('../utils/getUserId');
 const { generateJWTToken } = require('../utils/jwt');
 
 const getUserByEmail = async (email, password) => {
@@ -41,9 +42,17 @@ const getUserById = async (id) => {
     return user;
 };
 
+const deleteUser = async (user) => {
+    const { email, password } = user;
+    const token = await getUserByEmail(email, password);
+    const id = await getUserId(token);
+    await User.destroy({ where: { id } });
+};
+
 module.exports = {
     getUserByEmail,
     createUser,
     getUsers,
     getUserById,
+    deleteUser,
 };
