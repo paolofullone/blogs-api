@@ -10,7 +10,8 @@ services:
     container_name: blogs_api
     tty: true
     stdin_open: true
-    command: bash
+    command: bash -c 'npm run debug'
+    # para ver os logs executar no bash: docker logs -f blogs_api
     restart: always
     depends_on:
       - db
