@@ -7,8 +7,6 @@ const UserSchema = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     image: DataTypes.STRING,
-  }, {
-    timestamps: false,
   });
 
   UserTable.associate = (models) => {
