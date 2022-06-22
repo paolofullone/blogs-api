@@ -10,7 +10,7 @@ services:
     container_name: blogs_api
     tty: true
     stdin_open: true
-    command: bash -c 'npm run debug'
+    command: bash -c 'npm run prestart && npm run seed && npm run debug'
     # para ver os logs executar no bash: docker logs -f blogs_api
     restart: always
     depends_on:
@@ -21,7 +21,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       HOSTNAME: db
-      JWT_SECRET: secretJWT
+      JWT_SECRET: a64f124bb29741f9274fe8e7dd5896e3
   db:
     container_name: blogs_api_db
     image: mysql:8.0.21
