@@ -7,8 +7,8 @@ const { validatePost } = require('../middlewares/validatePost');
 const blogPostRouter = express.Router();
 
 blogPostRouter.post('/', validatePost, async (req, res) => {
-    const { email, password } = res.user;
-    const token = await userService.getUserByEmail(email, password);
+    const { email } = res.user;
+    const token = await userService.getUserByEmail(email);
     const newPost = await blogPostService.createBlogPost(token, req.body);
     res.status(201).send(newPost);
 });
