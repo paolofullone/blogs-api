@@ -43,8 +43,8 @@ const getUserById = async (id) => {
 };
 
 const deleteUser = async (user) => {
-    const { email, password } = user;
-    const token = await getUserByEmail(email, password);
+    const { email } = user;
+    const token = await getUserByEmail(email);
     const id = await getUserId(token);
     await User.destroy({ where: { id } });
 };
