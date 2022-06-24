@@ -18,6 +18,7 @@ services:
     ports:
       - 3000:3000
     environment:
+      TZ: "America/Sao_Paulo" # Configuração para deixar o timezone do Brasil/Brasilia
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       HOSTNAME: db
