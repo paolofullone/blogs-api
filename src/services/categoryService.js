@@ -2,11 +2,8 @@ const { Category } = require('../database/models');
 
 // não achou a findAll
 
-const getCategories = async () => {
-    const categories = await Category.findAll();
-    return categories;
-};
-
+const getCategories = async () => Category.findAll();
+    
 const getCategory = async (id) => {
     const category = await Category.findByPk(id);
     if (!category) {
@@ -16,11 +13,8 @@ const getCategory = async (id) => {
     return category;
 };
 
-const createCategory = async (name) => {
-    const category = await Category.create({ name });
-    return category;
-};
-
+const createCategory = async (name) => Category.create({ name });
+    
 module.exports = {
     getCategories,
     createCategory,

@@ -8,8 +8,7 @@ const getUserByEmail = async (email) => {
         const error = { status: 400, message: 'Invalid fields' };
         throw error;
     }
-    const token = generateJWTToken(email);
-    return token;
+    return generateJWTToken(email);
 };
 
 const createUser = async ({ displayName, email, password, image }) => {
@@ -19,16 +18,10 @@ const createUser = async ({ displayName, email, password, image }) => {
         throw error;
     }
     await User.create({ displayName, email, password, image });
-    const token = generateJWTToken(email, password);
-    return token;
+    return generateJWTToken(email);
 };
 
-const getUsers = async () => {
-    const users = await User.findAll({
-        attributes: { exclude: ['password'] },
-    });
-    return users;
-};
+const getUsers = async () => User.findAll({ attributes: { exclude: ['password'] } });
 
 const getUserById = async (id) => {
     const user = await User.findOne({
@@ -42,8 +35,7 @@ const getUserById = async (id) => {
     return user;
 };
 
-const deleteUser = async (user) => {
-    const { email } = user;
+const deleteUser = async ({ email }) => {
     const token = await getUserByEmail(email);
     const id = await getUserId(token);
     await User.destroy({ where: { id } });
