@@ -175,3 +175,7 @@ As regras de negócio foram omitidas em função da confidencialidade.
 [Email](paolo.fullone@gmail.com)
 
 </details>
+
+# Extras
+Após finalizar o projeto, utilizei a biblioteca bcrypt para criptografar a senha de novos usuários ao salvar no banco de dados.
+
