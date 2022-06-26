@@ -1,6 +1,6 @@
 # Projeto BlogsApi desenvolvido na Trybe durante o curso de formação fullstack em desenvolvimento web.
 
-O objetivo do projeto era construir um backend em `Node.js` capaz de suportar a criação de usuários, login, criação de blog posts e categorias utilizando o ORM `sequelize`.
+O objetivo do projeto era construir um backend em `Node.js` capaz de suportar a criação de usuários, login, criação de blog posts e categorias utilizando o ORM `sequelize` e banco de dados em MySQL.
 
 Os endpoints foram conectados usando os princípios do REST.
 
