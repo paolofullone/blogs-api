@@ -22,7 +22,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       HOSTNAME: db
-      JWT_SECRET: a64f124bb29741f9274fe8e7dd5896e3
+      JWT_SECRET: JWT_SECRET
   db:
     container_name: blogs_api_db
     image: mysql:8.0.21
