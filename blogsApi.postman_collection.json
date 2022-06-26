@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "97bc1b5e-d6f3-4925-994e-b6f9704f7204",
+		"name": "blogsApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20953724"
+	},
+	"item": [
+		{
+			"name": "post login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2NTUyMTIzMDcsImV4cCI6MTY1NTQ3MTUwN30.Og0pXEnvJpfl7-k0XMT0t9WPDqPBzFpraysF_t_RKnw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n          \"email\": \"MichaelSchumacher@gmail.com\",\r\n          \"password\": \"123456\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"displayName\": \"Ayrton Senna\",\r\n  \"email\": \"ayrtosn@senna.com\",\r\n  \"password\": \"thegreatestofalltimes\",\r\n  \"image\": \"https://www.ibraco.org.co/wp-content/uploads/2021/10/ayrton.jpg\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwiaWF0IjoxNjU1OTc4Mzg0LCJleHAiOjE2NTYyMzc1ODR9.ba9wvK1DQide04Qr94QoLM2IY9PJVZPkVQKUPJFeviA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2NTUyMTIzMDcsImV4cCI6MTY1NTQ3MTUwN30.Og0pXEnvJpfl7-k0XMT0t9WPDqPBzFpraysF_t_RKnw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/user/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1pY2hhZWxTY2h1bWFjaGVyQGdtYWlsLmNvbSIsImlhdCI6MTY1NjA2NDQ5OSwiZXhwIjoxNjU2MzIzNjk5fQ.rT5YRKpmGcKF697xjcI5UteHecMlH5QZP-AApPY-RLw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/categories/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post BlogPost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1pY2hhZWxTY2h1bWFjaGVyQGdtYWlsLmNvbSIsImlhdCI6MTY1NTk3ODkwNiwiZXhwIjoxNjU2MjM4MTA2fQ.Yz1DoO1srkR2tzvIoCF4FrwO68T32vdmUaQVRoxGNsM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"title\": \"Fórmula 1\",\r\n        \"content\": \"O campeão do ano!\",\r\n        \"categoryIds\": [1, 2]\r\n      }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/post",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Blog Posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1pY2hhZWxTY2h1bWFjaGVyQGdtYWlsLmNvbSIsImlhdCI6MTY1NjAwNzkxMCwiZXhwIjoxNjU2MjY3MTEwfQ.Jyk-5KoyGRA9DJTuohxAmc3q7WvN3d0zTnMHkaRBCYM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/post/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Post",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2NTUyMDM2MzksImV4cCI6MTY1NTQ2MjgzOX0.b3y6Lr8_FvW7xWCvJWYW2VSrRV2PMotP_67Ehw3pwt8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Latest updates, August 1st\",\r\n  \"content\": \"The whole text for the blog post goes here in this key\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/post/15",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post By Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2NTUyMDM2MzksImV4cCI6MTY1NTQ2MjgzOX0.b3y6Lr8_FvW7xWCvJWYW2VSrRV2PMotP_67Ehw3pwt8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/post/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1pY2hhZWxTY2h1bWFjaGVyQGdtYWlsLmNvbSIsImlhdCI6MTY1NTk3ODU3NCwiZXhwIjoxNjU2MjM3Nzc0fQ.zVxwWdnbVR3wpUj3RvxLqJAfBeAAB-LKojQt87Lu5EY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/post/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete myself",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwiaWF0IjoxNjU1OTMzMTk1LCJleHAiOjE2NTYxOTIzOTV9.QAqY_adOexPvSfuSMvnPwMWGoIg7JH1kEi3dRpfgOzo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/user/me",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seach by query",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxld2lzaGFtaWx0b25AZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2NTUyMTQxNjEsImV4cCI6MTY1NTQ3MzM2MX0.BqzY8ecqLXeo2ejiRDwaNXCzJEGOD_rk1zhMxv9nXIk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/post/search?q=post",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "post"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Categories",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Ik1pY2hhZWxTY2h1bWFjaGVyQGdtYWlsLmNvbSIsImlhdCI6MTY1NjA2NDk4NCwiZXhwIjoxNjU2MzI0MTg0fQ.Qknt3yvbjUwyUPluc7HOrB3lq_FadNBE-VBkEmEuXo4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tecnologia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
