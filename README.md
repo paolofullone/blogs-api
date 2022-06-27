@@ -146,5 +146,5 @@ As regras de negócio foram omitidas em função da confidencialidade.
 </details>
 
 # Extras
-Após finalizar o projeto, utilizei a biblioteca bcrypt para criptografar a senha de novos usuários ao salvar no banco de dados.
+Após finalizar o projeto, utilizei a biblioteca bcrypt para criptografar a senha de novas pessoas usuárias ao salvar no banco de dados, evitando assim a exposição da senha criada pela pessoa usuária..
 
