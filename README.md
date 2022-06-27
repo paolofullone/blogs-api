@@ -99,73 +99,42 @@ Neste [site](https://www.md5hashgenerator.com/) pode ser gerado um hash válido 
 As regras de negócio foram omitidas em função da confidencialidade.
 
 ## 1 - Crie migrations para as entidades User, Categories, BlogPosts, PostCategories
-
-<br />
-
 ---
 ## 2 - Crie o modelo 'User' em 'src/database/models/user.js' com as propriedades corretas
-
 ---
-
 ## 3 - Sua aplicação deve ter o endpoint POST `/login`
-
 ---
-
 ## 4 - Sua aplicação deve ter o endpoint POST `/user`
-
-
 ---
-
 ## 5 - Sua aplicação deve ter o endpoint GET `/user`
-
 ---
-
 ## 6 - Sua aplicação deve ter o endpoint GET `/user/:id`
 ---
-
 ## 7 - Crie o modelo 'Category' em 'src/database/models/category.js' com as propriedades corretas
-
 ---
-
 ## 8 - Sua aplicação deve ter o endpoint POST `/categories`
-
 ---
-
 ## 9 - Sua aplicação deve ter o endpoint GET `/categories`
-
 ---
-
 ## 10 - Crie o modelo 'BlogPost' em 'src/database/models/blogPost.js' com as propriedades e associações corretas
 ---
-
 ## 11 - Crie o modelo 'PostCategory' em 'src/database/models/postCategory.js' com as propriedades e associações corretas
-
 ---
-
 ## 12 - Sua aplicação deve ter o endpoint POST `/post`
 ---
-
 ## 13 - Sua aplicação deve ter o endpoint GET `/post`
 ---
-
 ## 14 - Sua aplicação deve ter o endpoint GET `/post/:id`
 ---
-
 ## 15 - Sua aplicação deve ter o endpoint PUT `/post/:id`
 ---
-
 # Requisitos Bônus
-
 ## 16 - Sua aplicação deve ter o endpoint DELETE `/post/:id`
-
-
 ---
-
 ## 17 - Sua aplicação deve ter o endpoint DELETE `/user/me`
 ---
-
 ## 18 - Sua aplicação deve ter o endpoint GET `/post/search?q=:searchTerm`
-
+---
 # Autor
 
 <details>
